@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const axios = Axios.create({
-    baseURL: 'http://localhost:3000/api'
+  baseURL: 'http://localhost:3000/api'
 })
 
 const ENDPOINTS = {
@@ -9,10 +9,14 @@ const ENDPOINTS = {
 }
 
 export default {
-  store: function(movie) {
+  store: function (movie) {
     return axios.post(ENDPOINTS.MOVIES, movie)
   },
-  index() {
-    return axios.get(ENDPOINTS.MOVIES)
+  index(term = '') {
+    return axios.get(ENDPOINTS.MOVIES, {
+      params: {
+        term
+      }
+    })
   }
 }
