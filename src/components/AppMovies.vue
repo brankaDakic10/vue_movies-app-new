@@ -1,17 +1,33 @@
 <template>
     <div class="container">
-        <h3>List of Movies</h3>
-        <div v-if="selectedMoviesIds.length">Selected: {{ selectedMoviesCounter }}</div>
+
         <movie-search @search-term-change="onSearchTermChanged" />
-        <section class="container">
-            <movie-row v-for="movie in movies" 
-            :key="movie.id" :movie="movie" 
-            @on-selected-movie="onSelectedMovie"></movie-row>
-            <div v-if="!movies.length">
-                No Movies
-            </div>
-        </section>
+        <div class="pt-3">
+      <b-badge
+        pill
+        variant="primary"
+        v-if="selectedMoviesIds.length"
+      >
+        Selected: {{ selectedMoviesCounter }}
+      </b-badge>
+
+
+      <movie-row
+        v-for="movie in movies"
+        :key="movie.id"
+        :movie="movie"
+        @on-selected-movie="onSelectedMovie"
+      />
+
+      <b-alert
+        show
+        variant="warning"
+        v-if="!movies.length"
+      >
+        No Movies
+      </b-alert>
     </div>
+</div>
 </template>
 
 <script>
