@@ -4,7 +4,7 @@
             <router-link class="navbar-brand" :to="{name: 'home'}">CinemaApp</router-link>
             <div class="navbar-nav">
                 <router-link class="nav-item nav-link" :to="{name: 'movies'}">Movies</router-link>
-
+                 <router-link class="nav-item nav-link" :to="{name: 'movie-form'}">Add</router-link>
             </div>
         </nav>
     </div>
@@ -12,7 +12,7 @@
 
 <script>
     export default {
-
+       name: 'NavBar',
     }
 </script>
 
