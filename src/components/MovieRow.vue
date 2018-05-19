@@ -1,5 +1,5 @@
 <template>
-     <div class="row" :class="{ 'highlighted': selected }" >
+     <div class="row" :class="{ 'highlighted text-white': selected  }" >
     <div class="col-sm" v-text="movie.id"></div>
     <div class="col-sm" v-text="movie.title"></div>
     <div class="col-sm" v-text="movie.director"></div>
@@ -9,7 +9,7 @@
     <div class="col-sm">
      <b-button
        type="submit"
-       variant="primary"
+       variant="success"
        @click="onSelected">
         Select
       </b-button>
@@ -25,11 +25,18 @@ export default {
       type: Object,
       required:true
       },
+      selectedMoviesIds: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
     
   },
-  data(){
-    return{
-      selected: false
+  // see more
+   computed: {
+    selected() {
+      return this.selectedMoviesIds
+        .indexOf(this.movie.id) > -1;
     }
   },
   methods:{
@@ -37,12 +44,13 @@ export default {
      this.selected = true
      this.$emit('on-selected-movie', this.movie)
    }
+   
   }
 }
 </script>
 
 <style>
 .highlighted {
-  background: lightblue;
+  background: rgb(57, 122, 243);
 }
 </style>

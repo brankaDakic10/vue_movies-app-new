@@ -2,20 +2,44 @@
     <div class="container">
 
         <movie-search @search-term-change="onSearchTermChanged" />
-        <div class="pt-3">
-      <b-badge
-        pill
-        variant="primary"
-        v-if="selectedMoviesIds.length"
-      >
-        Selected: {{ selectedMoviesCounter }}
-      </b-badge>
+         <div class="pt-3">
+      <div class="row mb-2">
+        <div class="col-md">
+          <b-badge
+            pill
+            variant="success"
+            v-if="selectedMoviesIds.length"
+          >
+            Selected: {{ selectedMoviesCounter }}
+          </b-badge>
+        </div>
+        <div class="col-md">
+          <b-button
+            size="sm"
+            variant="warning"
+            class="float-right"
+            @click="deselectAll"
+          >
+            Deselect All
+          </b-button>
+
+          <b-button
+            size="sm"
+            variant="primary"
+            class="float-right mr-1"
+            @click="selectAll"
+          >
+              Select All
+          </b-button>
+        </div>
+</div>
 
 
       <movie-row
         v-for="movie in movies"
         :key="movie.id"
         :movie="movie"
+         :selected-movies-ids="selectedMoviesIds"
         @on-selected-movie="onSelectedMovie"
       />
 
@@ -60,6 +84,13 @@
                     return;
                 }
                 this.selectedMoviesIds.push(movie.id)
+            },
+            
+            selectAll(){
+                this.selectedMoviesIds = this.movies.map((movie) => movie.id); 
+            },
+            deselectAll(){
+             this.selectedMoviesIds = [];
             }
 
 
