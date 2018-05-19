@@ -4,7 +4,12 @@
         <movie-search
       @search-term-change="onSearchTermChanged"
       />
+        <section class="container">
         <movie-row v-for="movie in movies" :key="movie.id" :movie="movie"></movie-row>
+       <div v-if="!movies.length">
+        No Movies
+       </div>
+        </section>
     </div>
 </template>
 
