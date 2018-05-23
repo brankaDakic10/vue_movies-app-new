@@ -76,7 +76,7 @@
         :selected-movies-ids="selectedMoviesIds"
         @on-selected-movie="onSelectedMovie"
       />
-  <!-- paginate -->
+
       <MoviePaginator
         :number-of-pages="totalNumberOfPages"
         :current-page="currentPage"

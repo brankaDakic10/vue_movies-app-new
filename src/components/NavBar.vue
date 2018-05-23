@@ -6,6 +6,7 @@
                 <router-link class="nav-item nav-link" :to="{name: 'movies'}">Movies</router-link>
                  <router-link class="nav-item nav-link" :to="{name: 'movie-form'}">Add</router-link>
             </div>
+            
         </nav>
     </div>
 </template>
