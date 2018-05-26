@@ -11,7 +11,11 @@
                 <b-form-input type="password" v-model="password" placeholder="Enter password">
                 </b-form-input>
             </b-form-group>
-            
+               <!-- error block -->
+            <div v-for="(error, key) in errors" :key="key" v-if="error" class="alert alert-danger">
+              {{error}}
+            </div>
+            <!--  -->
             
 
             <b-button type="submit" variant="success">Submit</b-button>
@@ -30,7 +34,7 @@ export default {
   name: 'AppLogin',
    data() {
             return {
-                
+                    errors:[],
                     email: '',
                     password: ''
             
@@ -41,7 +45,9 @@ export default {
           authService.login(this.email,this.password)
           .then(()=>{
               this.$router.push({name:'movies'})
-          })
+          }).catch(errors => {
+                        this.errors = errors.response.data;
+                    })
       }
        }
 }

@@ -5,7 +5,7 @@
             <div class="navbar-nav">
                 <router-link class="nav-item nav-link" :to="{name: 'movies'}">Movies</router-link>
                 <router-link class="nav-item nav-link" :to="{name: 'movie-form'}">Add</router-link>
-                <router-link class="nav-item nav-link" :to="{name: 'login'}">Login</router-link>
+                <router-link class="nav-item nav-link" :to="{name: 'login'}" v-if="!isAuthenticated">Login</router-link>
                 <a href="#" class="nav-item nav-link" @click="logout" v-if="isAuthenticated">LogOut</a>
             </div>
 
