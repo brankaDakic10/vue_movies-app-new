@@ -28,9 +28,13 @@
                 <b-form-input type="text" v-model="movieForm.genre" placeholder="Enter genre">
                 </b-form-input>
             </b-form-group>
-
-
-
+            <!-- error block -->
+            <div v-for="(error, key) in errors" :key="key" v-if="error" class="alert alert-danger">
+                <ul v-for="(oneError, key) in error" :key="key">
+                    <li>{{oneError}}</li>
+                </ul>
+            </div>
+            <!--  -->
 
             <b-button type="submit" variant="success">Submit</b-button>
             <!-- <b-button type="reset" variant="danger">Reset</b-button> -->
@@ -50,6 +54,7 @@
         name: 'MovieForm',
         data() {
             return {
+                errors: [],
                 movieForm: {
                     title: '',
                     director: '',
@@ -65,12 +70,12 @@
                 MoviesService.store(this.movieForm)
                     .then((success) => {
                         this.redirectToHome()
-                    }).catch((error) => {
-                        console.log(error)
+                    }).catch(errors => {
+                        this.errors = errors.response.data;
                     })
             },
             redirectToHome() {
-                   this.$router.push({
+                this.$router.push({
                     name: 'home'
                 })
             },
