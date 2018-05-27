@@ -66,7 +66,7 @@
                         this.$router.push({
                             name: 'login'
                         })
-
+                        
                     }).catch(errors => {
                       this.errors = errors.response.data;
                       console.log('see',this.errors)

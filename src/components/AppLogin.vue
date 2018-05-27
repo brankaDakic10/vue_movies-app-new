@@ -39,6 +39,7 @@
                 errors: [],
                 email: '',
                 password: '',
+                  isAuthenticated: authService.isAuthenticated()
             }
         },
         methods: {
@@ -48,6 +49,7 @@
                         this.$router.push({
                             name: 'movies'
                         })
+                        this.isAuthenticated(true);
 
                     }).catch(errors => {
                         this.errors = errors.response.data;
