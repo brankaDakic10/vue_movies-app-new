@@ -9,6 +9,7 @@ import {
 import AppMovies from './components/AppMovies.vue'
 import MovieForm from './components/MovieForm.vue'
 import AppLogin from './components/AppLogin.vue'
+import AppMovie from './components/AppMovie.vue'
 import AppRegister from './components/AppRegister.vue'
 
 Vue.use(VueRouter)
@@ -50,6 +51,15 @@ const routes = [{
         meta: {
             guestOnly: true
         }
+    },
+    {
+        path: '/movies/:id',
+        component: AppMovie,
+        name: 'movie',
+        meta: {
+            requiresAuth: true
+        }
+       
     }
 
 ]

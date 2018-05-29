@@ -18,5 +18,9 @@ export default {
         term
       }
     })
+  },
+
+  getMovie(id){
+    return axios.get(`/movies/${id}`)
   }
 }
