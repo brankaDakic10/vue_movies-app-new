@@ -42,7 +42,7 @@ export default {
   methods:{
     onSelected() {
      this.selected = true
-     this.$emit('on-selected-movie', this.movie)
+     this.$emit('on-selected-movie', this.movie,!this.selected)
    }
    
   }

@@ -141,8 +141,16 @@ export default {
           this.movies = data
         })
     },
-    onSelectedMovie(movie) {
-      if (this.selectedMoviesIds.indexOf(movie.id) > -1) {
+    // onSelectedMovie(movie) {
+    //   if (this.selectedMoviesIds.indexOf(movie.id) > -1) {
+    //     return;
+    //   }
+    //   this.selectedMoviesIds.push(movie.id)
+    // },
+     onSelectedMovie(movie, isSelected) {
+      if (!isSelected) {
+        let movieIndex = this.selectedMoviesIds.indexOf(movie.id);
+        this.selectedMoviesIds.splice(movieIndex, 1);
         return;
       }
       this.selectedMoviesIds.push(movie.id)
